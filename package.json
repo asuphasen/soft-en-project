@@ -25,6 +25,7 @@
     "ng2-opd-popup": "^1.1.21",
     "rxjs": "^6.3.3",
     "tslib": "^1.9.0",
+    "uikit": "^3.0.0-rc.25",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

@@ -1,0 +1,17 @@
+.menu-desktop.right{
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+.menu-desktop.right li a{
+    font-size: 20px;
+}
+
+.menu-desktop.left{
+    position: relative;
+    left: 10px;
+    top: 0px;
+}
+.menu-desktop.left li a{
+    font-size: 20px;
+}

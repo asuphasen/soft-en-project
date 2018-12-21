@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
+  isLogin:boolean=false
   constructor(private firebase : AngularFireDatabase) { }
-  private data:Observable<any[]>;
+  data:Observable<any[]>;
 
   ngOnInit() {
     this.data = this.firebase.list('product').valueChanges();

@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 
 import { FormsModule } from '@angular/forms';
-import {PopupModule} from 'ng2-opd-popup';
+
 
 const firebase = {
   apiKey: "AIzaSyDPlk39ay7qvgW7qUrCft-iidepBz1znk0",
@@ -40,8 +40,7 @@ const firebase = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AppRoutingModule,
-    FormsModule,
-    PopupModule.forRoot()
+    FormsModule
     
   ],
   providers: [],

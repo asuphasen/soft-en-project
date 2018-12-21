@@ -10,13 +10,16 @@ import { Observable } from 'rxjs';
 export class ProductComponent implements OnInit {
 
   constructor(private firebase : AngularFireDatabase) { }
-  private data:Observable<any[]>;
+  data:Observable<any[]>;
 
   ngOnInit() {
-    this.data = this.firebase.list('/product',ref=>ref.orderByChild('oid').equalTo("0Krx4LnVJ7cYO58jgxpiGLyDuC93")).valueChanges();
-    console.log(this.data);
-    this.data.forEach(element => {
-      console.log(element);
-    });
+    this.firebase.list('/product',ref=>ref.orderByChild('oid').equalTo("0Krx4LnVJ7cYO58jgxpiGLyDuC93")).valueChanges().subscribe(data=>{
+      console.log(data);
+    })
+    // this.data = this.firebase.list('/product',ref=>ref.orderByChild('oid').equalTo("0Krx4LnVJ7cYO58jgxpiGLyDuC93")).valueChanges();
+    // console.log(data);
+    // this.data.forEach(element => {
+    //   console.log(element);
+    // });
   }
 }

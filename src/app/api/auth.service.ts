@@ -29,6 +29,20 @@ export class AuthService {
     })
   }
 
+  logout(){
+    return new Observable(observable=>{
+      this.auth.auth.signOut()
+      .then(user=>{
+        observable.next();
+        observable.complete();
+      })
+      .catch(err=>{
+        observable.error(err.code);
+        observable.complete();
+      })
+    })
+  }
+
   register(userData){
     return new Observable(observable=>{
       this.auth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
