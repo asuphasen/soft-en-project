@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="card card-container">
+      <p class="font-weight-bold" style="font-size:20px; font-family:Arial, Helvetica, sans-serif">SIGN UP</p>
+      <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+      <p id="profile-name" class="profile-name-card"></p>
+
+      <div class="form-signin">
+          <span id="reauth-email" class="reauth-email"></span>
+          
+          <input type="name" [(ngModel)]="name" class="form-control" placeholder="Name" autocomplete="off">
+          <input type="email" [(ngModel)]="email" class="form-control" placeholder="Email address" autocomplete="off">
+          <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password" autocomplete="off">
+          <p></p>
+          <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="register()">Confirm</button>
+      </div>
+
+  </div>
+</div>
