@@ -1,14 +1,14 @@
 <header>
   <!-- Header desktop -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
+
 
     <div class="menu-desktop left">
       <ul class="main-menu">
 
-          <a href="/home" class="logo">
-            <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
-          </a>
+        <a href="/home" class="logo">
+          <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
+        </a>
         <li>
           <a href="/home">Home</a>
         </li>
@@ -48,6 +48,12 @@
     </div>
 
     <div class="row isotope-grid">
+
+      <div class="modal-container">
+        <input #modal id="modal-toggle" type="checkbox">
+        
+
+
       <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item bag" *ngFor="let item of data | async">
         <!-- Block2 -->
         <div class="block2">
@@ -55,7 +61,8 @@
             <img src="{{item.url}}" alt="IMG-PRODUCT">
 
             <button class="btn btn-primary" data-toggle="modal" focus-element="autofocus" data-target=".bs-example-modal-lg"
-              class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" (click)="getdetail(item)">
+              class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+              (click)="getdetail(item)">
               Quick View
             </button>
           </div>
@@ -70,7 +77,16 @@
                 {{item.price}}.-
               </span>
             </div>
-            <span><button type="button" class="btn btn-dark" (click)="getdetail(item)" data-toggle="modal" focus-element="autofocus" data-target=".bs-example-modal-lg2" >Quick add&nbsp;<i class="fas fa-handshake"></i></button></span> &nbsp;
+
+            
+
+            <span>
+                <label class="modal-btn" for="modal-toggle" (click)="getdetail(item)">Quick add&nbsp;<i class="fas fa-handshake"></i></label> 
+              <!-- <button type="button" class="btn btn-dark" (click)="getdetail(item)" data-toggle="modal"
+                focus-element="autofocus" data-target=".bs-example-modal-lg2">Quick add&nbsp;<i class="fas fa-handshake"></i>
+              </button> -->
+            </span>
+            &nbsp;
             <span><button type="button" class="btn btn-success">+ cart&nbsp;<i class="fas fa-shopping-cart"></i></button></span>
             <div class="block2-txt-child2 flex-r p-t-3">
               <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
@@ -81,6 +97,33 @@
           </div>
         </div>
       </div>
+
+
+      <!-- <div class="modal-container">
+        <input id="modal-toggle" type="checkbox">
+        <label class="modal-btn" for="modal-toggle">Click me</label>  -->
+        <label class="modal-backdrop" for="modal-toggle"></label>
+        <div class="modal-content">
+          <label class="modal-close" for="modal-toggle">&#x2715;</label>
+              
+              <div class="header"></div>
+              <div class="body">
+                  <p>&nbsp;</p>
+                  <p><strong>url</strong> <input type="text" value="{{datas.url}}"></p>
+                  <p><strong>Name</strong> <input type="text"  value="{{datas.productName}}"></p>
+                  <p><strong>Detail</strong> <textarea rows="8" type="text" value="{{datas.detail}}"></textarea></p>
+                  <p><strong>Address</strong> <input type="text" name="address" [(ngModel)]="inputaddress"></p>
+                  <p><strong>Price</strong> <input type="text" value="{{datas.price}}"></p>
+              </div>
+              <div class="footer">
+                  <button type="submit" class="btm-me" data-dismiss="modal-content" (click)="additem(datas)">Confirm</button>
+                  <!-- <label class="modal-content-btn" for="modal-toggle" data-dismiss="modal">Close</label>    -->
+             </div>
+              
+          
+        </div>          
+      </div>  
+
 
     </div>
   </div>
@@ -143,16 +186,16 @@
 
           <div class="modal-body">
             <div class="i">
-                <img src="{{datas.url}}">
+              <img src="{{datas.url}}">
             </div>
             <div class="body-detail">
               <p>&nbsp;</p>
-                <p><strong style="font-size: 22;">Name</strong>    :   {{datas.productName}}</p>
-                <p><strong>Detail</strong>  :   {{datas.detail}}</p>
-                <p><strong>Address</strong> :   {{datas.address}}</p>
-                <p><strong>Price</strong>   :   {{datas.price}} .-</p>
+              <p><strong style="font-size: 22;">Name</strong> : {{datas.productName}}</p>
+              <p><strong>Detail</strong> : {{datas.detail}}</p>
+              <p><strong>Address</strong> : {{datas.address}}</p>
+              <p><strong>Price</strong> : {{datas.price}} .-</p>
             </div>
-            
+
           </div>
 
           <div class="modal-footer">
@@ -168,32 +211,34 @@
 
 <!-- Modal2 -->
 <div class="modal-bg modal-size">
-    <div class="dialog">
-  
-      <div class="modal fade bs-example-modal-lg2" focus-group focus-group-head="loop" focus-group-tail="loop"
-        focus-stacktabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-  
-            <div class="modal-body">
-              <div class="body-detail">
-                <p><strong>url</strong> <input type="text" class="form-control" value="{{datas.url}}"></p>
-                <p><strong>Name</strong> <input type="text" class="form-control" value="{{datas.productName}}"></p>
-                <p><strong>Detail</strong> <input type="text" class="form-control" value="{{datas.detail}}"></p>
-                <p><strong>Address</strong> <input type="text" class="form-control" name="address" [(ngModel)]="inputaddress"></p>
-                <p><strong>Price</strong> <input type="text" class="form-control" value="{{datas.price}}"></p>
-              </div>
-              
-              
+  <div class="dialog">
+
+    <div class="modal fade bs-example-modal-lg2" focus-group focus-group-head="loop" focus-group-tail="loop"
+      focus-stacktabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <div class="body-detail">
+              <p><strong>url</strong> <input type="text" class="form-control" value="{{datas.url}}"></p>
+              <p><strong>Name</strong> <input type="text" class="form-control" value="{{datas.productName}}"></p>
+              <p><strong>Detail</strong> <input type="text" class="form-control" value="{{datas.detail}}"></p>
+              <p><strong>Address</strong> <input type="text" class="form-control" name="address" [(ngModel)]="inputaddress"></p>
+              <p><strong>Price</strong> <input type="text" class="form-control" value="{{datas.price}}"></p>
             </div>
-  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="additem(datas)">confirm</button>
-              <button type="button" class="btn btn-danger" focus-element="autofocus" data-dismiss="modal" >Close</button>
-            </div>
-  
+
+
           </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="additem(datas)">confirm</button>
+            <button type="button" class="btn btn-danger" focus-element="autofocus" data-dismiss="modal">Close</button>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- modal 3 -->

@@ -31,10 +31,14 @@ export class ProductComponent implements OnInit {
       
     //   console.log(data);
     // })
-    this.data = this.firebase.list('/product',ref=>ref.orderByChild('oid').equalTo("0Krx4LnVJ7cYO58jgxpiGLyDuC93")).valueChanges();
-    console.log(this.data);
-    this.data.forEach(element => {
-      console.log(element);
-    });
+    this.auth.authState.subscribe(data2=>{
+      console.log(data2.uid)
+      this.data = this.firebase.list('/product',ref=>ref.orderByChild('oid').equalTo(data2.uid.toString())).valueChanges();
+      console.log(this.data);
+      this.data.forEach(element => {
+        console.log(element);
+      });
+    })
+    
   }
 }

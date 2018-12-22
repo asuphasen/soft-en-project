@@ -38,10 +38,12 @@ export class AuthService {
     return this.db.list('user/' + this.userdata.uid).valueChanges();
   }
 
-  getname() {
-    console.log("in auth function")
-    console.log(this.userdata)
-    return this.userdata;
+  getname(uid) {
+    return this.db.database.ref('user/'+uid+'/uname')
+    
+    // console.log("in auth function")
+    // console.log(this.userdata)
+    // return this.userdata;
   }
 
   logout() {
