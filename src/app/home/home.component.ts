@@ -44,13 +44,8 @@ export class HomeComponent implements OnInit {
   ) {
     auth.authState.subscribe(user => {
       if (user != null) {
-        console.log(user.uid)
         this.isLogin = true;
-        // auth2.getname().once('value',name=>{
-        //   console.log(name.val())
-        // })
         this.auth2.getname(user.uid).once('value',user=>{
-          console.log(user.val())
           this.username = user.val();
         })
       } else {
@@ -72,7 +67,6 @@ export class HomeComponent implements OnInit {
     this.usern.forEach(n =>{
       console.log(n)
     })
-    console.log(this.username + "5555555555++++++12")
   }
 
   logout() {
@@ -102,7 +96,5 @@ export class HomeComponent implements OnInit {
         this.render.setElementStyle(this.modalRef,'display','none')
       }
     })
-    
-
   }
 }

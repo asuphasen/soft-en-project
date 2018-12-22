@@ -22,7 +22,7 @@
       <div class="menu-desktop right">
         <ul class="main-menu">
           <li>
-            <a href="#"></a>
+            <a href="/home">{{username}}</a>
           </li>
   
           <li>
@@ -47,21 +47,23 @@
       <br>
     </div>
     
-    <div class="row isotope-grid">
+    <div class="row isotope-grid"><!-- Block2 -->
+
+        <div class="modal-container"><!-- Block2 -->
+          <input #modal id="modal-toggle" type="checkbox"><!-- Block2 -->
+
       <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item bag"  *ngFor="let item of data | async">
         <!-- Block2 -->
         <div class="block2">
           <div class="block2-pic hov-img0">
             <img src="{{item.url}}" alt="IMG-PRODUCT">
 
-            <button class="btn btn-primary" data-toggle="modal" focus-element="autofocus" data-target=".bs-example-modal-lg" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                Quick View
-              </button>
+            <label class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" for="modal-toggle" (click)="getdetail(item)">Quick View</label>
           </div>
 
           <div class="block2-txt flex-w flex-t p-t-14">
             <div class="block2-txt-child1 flex-col-l ">
-              <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+              <a href="#" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                 {{ item.productName }}
               </a>
 
@@ -79,6 +81,28 @@
           </div>
         </div>
       </div>
+
+      <label class="modal-backdrop" for="modal-toggle"></label>
+      <div class="modal-content"><!-- Block2 -->
+        <label class="modal-close" for="modal-toggle">&#x2715;</label>
+            
+            <div class="header"></div>
+            <div class="body">
+                <p>&nbsp;</p>
+                <p><strong>url</strong> <input type="text" value="{{datas.url}}"></p>
+                <p><strong>Name</strong> <input type="text"  value="{{datas.productName}}"></p>
+                <p><strong>Detail</strong> <textarea rows="8" type="text" value="{{datas.detail}}"></textarea></p>
+                <p><strong>Address</strong> <input type="text" name="address" [(ngModel)]="inputaddress"></p>
+                <p><strong>Price</strong>{{datas.price}}</p>
+            </div>
+            <div class="footer">
+                <button type="submit" class="btm-me" data-dismiss="modal-content" (click)="additem(datas)">Confirm</button>
+           </div>
+
+      </div> <!-- Block2 -->         
+    </div>  
+
+
 
     </div>
   </div>
