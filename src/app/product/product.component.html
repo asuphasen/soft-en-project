@@ -1,27 +1,37 @@
 <header>
   <!-- Header desktop -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="/index" class="logo">
-      <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
-    </a>
-
-    <div class="menu-desktop">
-      <ul class="main-menu">
-        <li>
-          <a href="/index">Home</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0 main-menu" style="float:right">
-        <li>
-          <a href="/login">Login</a>
-        </li> 
-      </form>
-
-    </div>
-
     
 
-  </nav>
+      <div class="menu-desktop left">
+        <ul class="main-menu">
+  
+            <a href="/home" class="logo">
+              <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
+            </a>
+          <li>
+            <a href="/home">Home</a>
+          </li>
+  
+          <li>
+            <a href="/product">My Store</a>
+          </li>
+        </ul>
+      </div>
+  
+      <div class="menu-desktop right">
+        <ul class="main-menu">
+          <li>
+            <a href="#">wudthichai</a>
+          </li>
+  
+          <li>
+            <a href="#" (click)="logout()" *ngIf="isLogin">Logout&nbsp;<i class="fas fa-sign-out-alt"></i></a>
+            <a href="/login" *ngIf="!isLogin">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   <div>
     <img src="assets/images/slide-04.jpg" alt="" style="width:100%">
   </div>
@@ -59,7 +69,7 @@
                 {{item.price}} .-
               </span>
             </div>
-
+            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
             <div class="block2-txt-child2 flex-r p-t-3">
               <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                 <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png" alt="ICON">

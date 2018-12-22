@@ -9,6 +9,7 @@ import { AuthService } from '../api/auth.service';
 export class RegisterComponent implements OnInit {
 
     name:string;
+    address:string;
     email:string;
     password:string;
 
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
   register(){
     var user={
       name:this.name,
+      address:this.address,
       email:this.email,
       password:this.password
     }

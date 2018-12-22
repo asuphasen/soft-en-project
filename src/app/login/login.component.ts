@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.auth.login({email:this.email, password:this.password}).subscribe(data=>{
+    this.auth.login({email:this.email, password:this.password}).subscribe(data =>{
+      console.log(this.auth.getname().uid)
       this.route.navigate(['/home'])
     }, err=>{
       console.log(err)

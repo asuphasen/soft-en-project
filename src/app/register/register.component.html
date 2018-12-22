@@ -8,11 +8,16 @@
           <span id="reauth-email" class="reauth-email"></span>
           
           <input type="name" [(ngModel)]="name" class="form-control" placeholder="Name" autocomplete="off">
+          <input type="address" [(ngModel)]="address" class="form-control" placeholder="Address" autocomplete="off">
           <input type="email" [(ngModel)]="email" class="form-control" placeholder="Email address" autocomplete="off">
           <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password" autocomplete="off">
           <p></p>
           <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="register()">Confirm</button>
       </div>
+
+      <div>
+            <a href="/login"><h2>Have account</h2></a>
+        </div>
 
   </div>
 </div>

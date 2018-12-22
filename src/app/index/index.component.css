@@ -9,9 +9,25 @@
 
 .menu-desktop.left{
     position: relative;
-    left: 10px;
+    left: 30px;
     top: 0px;
 }
 .menu-desktop.left li a{
     font-size: 20px;
+}
+
+.i img {
+    position: relative;
+    width: 100%;
+}
+
+.body-detail p{
+    position: relative;
+    text-align: left;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body-detail strong{
+    font-size: 22px;
 }

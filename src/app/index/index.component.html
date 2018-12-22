@@ -1,14 +1,16 @@
 <header>
   <!-- Header desktop -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="/home" class="logo">
-      <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
-    </a>
+    
 
     <div class="menu-desktop left">
       <ul class="main-menu">
+
+          <a href="" class="logo">
+            <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
+          </a>
         <li>
-          <a href="/home">Home</a>
+          <a href="">Home</a>
         </li>
       </ul>
     </div>
@@ -16,7 +18,7 @@
     <div class="menu-desktop right">
       <ul class="main-menu">
         <li>
-          <a href="/login" *ngIf="!isLogin">Login</a>
+          <a href="/login" *ngIf="!isLogin">Login&nbsp;<i class="fas fa-sign-in-alt"></i></a>
         </li>
         <li>
             <a href="/register" *ngIf="!isLogin">Sign up</a>
@@ -47,7 +49,7 @@
             <img src="{{item.url}}" alt="IMG-PRODUCT">
 
             <button class="btn btn-primary" data-toggle="modal" focus-element="autofocus" data-target=".bs-example-modal-lg"
-              class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+              class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" (click)="getdetail(item)">
               Quick View
             </button>
           </div>
@@ -62,7 +64,6 @@
                 {{item.price}} .-
 
               </span>
-              <span><button type="submit" class="btn btn-dark">Quick Add</button></span>
 
             </div>
 
@@ -127,35 +128,35 @@
 </div>
 
 <!-- Modal1 -->
-<div class="modal-bg">
-  <div class="dialog">
-
-    <div class="modal fade bs-example-modal-lg" focus-group focus-group-head="loop" focus-group-tail="loop"
-      focus-stacktabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div class="modal-bg modal-size">
+    <div class="dialog">
+  
+      <div class="modal fade bs-example-modal-lg" focus-group focus-group-head="loop" focus-group-tail="loop"
+        focus-stacktabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body">
+              <div class="i">
+                  <img src="{{datas.url}}">
+              </div>
+              <div class="body-detail">
+                <p>&nbsp;</p>
+                  <p><strong style="font-size: 22;">name</strong>    :   {{datas.productName}}</p>
+                  <p><strong>detail</strong>  :   {{datas.detail}}</p>
+                  <p><strong>address</strong>  :   {{datas.address}}</p>
+                  <p><strong>price</strong>   :   {{datas.price}} .-</p>
+              </div>
+              
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Add to Cart</button>
+              <button type="button" class="btn btn-default" focus-element="autofocus" data-dismiss="modal">Close</button>
+            </div>
+  
           </div>
-
-          <div class="modal-body">
-            eeeeeeee <br />
-            dddddddd
-            eeeeeeeeeee<br />
-            rrrrrrrrrrrrr
-            tttttttttttt<br />
-            yyyyyyyyyyyyy
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" focus-element="autofocus" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-
         </div>
       </div>
     </div>
   </div>
-</div>

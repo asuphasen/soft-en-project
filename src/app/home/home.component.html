@@ -1,12 +1,14 @@
 <header>
   <!-- Header desktop -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="/home" class="logo">
-      <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
-    </a>
+    
 
-    <div class="menu-desktop">
+    <div class="menu-desktop left">
       <ul class="main-menu">
+
+          <a href="/home" class="logo">
+            <img src="assets/images/icons/logo-03.png" alt="IMG-LOGO">
+          </a>
         <li>
           <a href="/home">Home</a>
         </li>
@@ -20,18 +22,18 @@
     <div class="menu-desktop right">
       <ul class="main-menu">
         <li>
-          <a href="#">User 1</a>
+          <a href="#">{{ username }}</a>
         </li>
 
         <li>
-          <a href="#" (click)="logout()" *ngIf="isLogin">Logout</a>
+          <a href="#" (click)="logout()" *ngIf="isLogin">Logout&nbsp;<i class="fas fa-sign-out-alt"></i></a>
           <a href="/login" *ngIf="!isLogin">Login</a>
         </li>
       </ul>
     </div>
   </nav>
   <div>
-    <img src="assets/images/slide-04.jpg" alt="">
+    <img src="assets/images/slide-04.jpg" alt="" style="width:100%">
   </div>
 </header>
 
@@ -53,14 +55,14 @@
             <img src="{{item.url}}" alt="IMG-PRODUCT">
 
             <button class="btn btn-primary" data-toggle="modal" focus-element="autofocus" data-target=".bs-example-modal-lg"
-              class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+              class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" (click)="getdetail(item)">
               Quick View
             </button>
           </div>
 
           <div class="block2-txt flex-w flex-t p-t-14">
             <div class="block2-txt-child1 flex-col-l ">
-              <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+              <a href="#" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                 {{item.productName}}
               </a>
 
@@ -68,7 +70,8 @@
                 {{item.price}}.-
               </span>
             </div>
-            <span><button type="submit" class="btn btn-dark">Quick Add</button></span>
+            <span><button type="button" class="btn btn-dark" (click)="getdetail(item)" data-toggle="modal" focus-element="autofocus" data-target=".bs-example-modal-lg2" >Quick add&nbsp;<i class="fas fa-handshake"></i></button></span> &nbsp;
+            <span><button type="button" class="btn btn-success">+ cart&nbsp;<i class="fas fa-shopping-cart"></i></button></span>
             <div class="block2-txt-child2 flex-r p-t-3">
               <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                 <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png" alt="ICON">
@@ -130,7 +133,7 @@
 </div>
 
 <!-- Modal1 -->
-<div class="modal-bg">
+<div class="modal-bg modal-size">
   <div class="dialog">
 
     <div class="modal fade bs-example-modal-lg" focus-group focus-group-head="loop" focus-group-tail="loop"
@@ -138,26 +141,21 @@
       <div class="modal-dialog">
         <div class="modal-content">
 
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Product Detail</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          </div>
-
           <div class="modal-body">
-            <br> _____________________
-            <br> | |
-            <br> | |
-            <br> | |
-            <br> | show image |
-            <br> | |
-            <br> | |
-            <br> |___________________|
-            <br> name: product name
-            <br> detail : aaaaaaaaa
+            <div class="i">
+                <img src="{{datas.url}}">
+            </div>
+            <div class="body-detail">
+              <p>&nbsp;</p>
+                <p><strong style="font-size: 22;">Name</strong>    :   {{datas.productName}}</p>
+                <p><strong>Detail</strong>  :   {{datas.detail}}</p>
+                <p><strong>Address</strong> :   {{datas.address}}</p>
+                <p><strong>Price</strong>   :   {{datas.price}} .-</p>
+            </div>
+            
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Quick Add</button>
             <button type="button" class="btn btn-primary">Add to Cart</button>
             <button type="button" class="btn btn-default" focus-element="autofocus" data-dismiss="modal">Close</button>
           </div>
@@ -167,3 +165,35 @@
     </div>
   </div>
 </div>
+
+<!-- Modal2 -->
+<div class="modal-bg modal-size">
+    <div class="dialog">
+  
+      <div class="modal fade bs-example-modal-lg2" focus-group focus-group-head="loop" focus-group-tail="loop"
+        focus-stacktabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body">
+              <div class="body-detail">
+                <p><strong>url</strong> <input type="text" class="form-control" value="{{datas.url}}"></p>
+                <p><strong>Name</strong> <input type="text" class="form-control" value="{{datas.productName}}"></p>
+                <p><strong>Detail</strong> <input type="text" class="form-control" value="{{datas.detail}}"></p>
+                <p><strong>Address</strong> <input type="text" class="form-control" name="address" [(ngModel)]="inputaddress"></p>
+                <p><strong>Price</strong> <input type="text" class="form-control" value="{{datas.price}}"></p>
+              </div>
+              
+              
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="additem(datas)">confirm</button>
+              <button type="button" class="btn btn-danger" focus-element="autofocus" data-dismiss="modal" >Close</button>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -74,6 +74,7 @@ body, html {
 
 .form-signin #inputEmail,
 .form-signin #inputPassword,
+.form-signin #inputAddress,
 .form-signin #inputName {
     direction: ltr;
     height: 44px;
@@ -82,6 +83,7 @@ body, html {
 
 .form-signin input[type=email],
 .form-signin input[type=password],
+.form-signin input[type=address],
 .form-signin input[type=name],
 .form-signin input[type=text],
 .form-signin button {
